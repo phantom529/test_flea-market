@@ -1,0 +1,75 @@
+.purchase {
+  display: flex;
+  max-width: 1000px;
+  margin: 40px auto;
+  gap: 40px;
+}
+
+.purchase-left {
+  width: 65%;
+}
+
+.purchase-right {
+  width: 35%;
+}
+
+.item {
+  display: flex;
+  gap: 20px;
+}
+
+.item-image {
+  width: 120px;
+  height: 120px;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-name {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.item-price {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.section {
+  margin-top: 30px;
+}
+
+.select {
+  width: 100%;
+  padding: 8px;
+}
+
+.change {
+  color: #007bff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.summary {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.buy-button {
+  width: 100%;
+  padding: 15px;
+  background: #ff5a5f;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}

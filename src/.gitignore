@@ -1,0 +1,28 @@
+# OS
+.DS_Store
+# Node
+/node_modules
+
+/public/hot
+/public/storage
+
+# Laravel
+/storage/*.key
+/vendor/
+.env
+/storage/framework/
+storage/logs/
+
+# Docker / MySQL data
+docker/mysql/data/
+
+# IDE
+.vscode/
+
+.env.backup
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
