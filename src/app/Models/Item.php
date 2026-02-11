@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-    use HasFactory;
 
     protected $fillable = [
         'name',
@@ -35,6 +34,6 @@ class Item extends Model
     // 購入
     public function purchase()
     {
-        return $this->hasOne(Purchase::class);
+        return $this->hasMany(Purchase::class);
     }
 }

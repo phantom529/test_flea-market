@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   nginx:
     image: nginx:1.21.1
@@ -30,7 +28,7 @@ services:
       - "3306:3306"
     command: --default-authentication-plugin=mysql_native_password
     volumes:
-      - ./docker/mysql/data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
 
   phpmyadmin:
@@ -50,4 +48,7 @@ services:
     ports:
       - "8025:8025"
       - "1025:1025"
+
+volumes:
+  mysql-data:
 
