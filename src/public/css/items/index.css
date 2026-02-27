@@ -1,0 +1,133 @@
+/* ===== ページ全体（白を全幅） ===== */
+.page {
+  width: 100%;
+  background: #fff;
+  min-height: calc(100vh - 70px);
+  border: none !important;
+}
+
+/* tabsとgridの共通コンテナ */
+.content {
+  width: min(1512px, 100%);
+  margin: 0 auto;
+  padding: 0 69px;
+  /* ← これが “検索ボックス寄り” の基準 */
+}
+
+/* ===== タブ（検索ボックス寄りに） =====
+   右画像の “products-row : 幅 1374px / 左 69px” を意識
+   → 1400px台で「左 70px」スタートにすると近い */
+.tabs {
+  display: flex;
+  gap: 48px;
+  padding: 16px 0;
+  border-bottom: 1px solid #ccc;
+
+  /* ここがタブの位置調整ポイント */
+  width: min(1374px, 100%);
+  margin-left: 69px;
+  /* ← Figmaの左=69px */
+}
+
+.tabs__link {
+  text-decoration: none;
+  color: #726e6e;
+  font-weight: 800;
+  padding: 6px 0;
+  font-size: 15px;
+}
+
+.tabs__link.is-active {
+  color: #e60023;
+}
+
+/* ===== グリッド（4列×2行で収める） =====
+   画像の「products-row 幅 1374px / 高さ 320px」より
+   → 1行4枚が基本になるように、コンテナ幅を1374pxで固定気味に */
+
+/* 4列固定：1400〜1540を想定 */
+.grid {
+  padding: 34px 0 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 40px;
+  row-gap: 48px;
+}
+
+/* 1400未満だけ崩れ防止 */
+@media (max-width: 1399px) {
+  .content {
+    padding: 0 40px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    padding: 0 20px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== カード ===== */
+.card {
+  text-decoration: none;
+  color: #111;
+  display: block;
+}
+
+/* 画像ボックス：見本に近い比率 */
+.card__image {
+  height: 250px;
+  /* 210だと小さく見えるので少し大きく */
+  background: #dcdcdc;
+  display: grid;
+  place-items: center;
+  position: relative;
+  border-radius: 2px;
+}
+
+.card__image-text {
+  font-weight: 800;
+  font-size: 34px;
+  color: #333;
+}
+
+.card__sold {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #e60023;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 2px;
+}
+
+.card__name {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111;
+}
+
+/* 何も無い時 */
+.empty {
+  width: min(1374px, 100%);
+  margin-left: 69px;
+  padding: 30px 0;
+  color: #666;
+}

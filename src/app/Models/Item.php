@@ -4,9 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Category;
+use App\Models\Purchase;
 
 class Item extends Model
 {
+
+    use HasFactory;
 
     protected $fillable = [
         'name',
@@ -17,9 +22,11 @@ class Item extends Model
         'item_comment',
         'condition',
         'brand_name',
+        'is_sold',
     ];
 
     // 出品者
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -28,12 +35,18 @@ class Item extends Model
     // カテゴリ（多対多）
     public function categories()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class, 'item_category');
     }
 
     // 購入
     public function purchase()
     {
-        return $this->hasMany(Purchase::class);
+        return $this->hasOne(Purchase::class);
     }
+
+    //いいね
+    public function likes()
+{
+    return $this->hasMany(\App\Models\Like::class);
+}
 }

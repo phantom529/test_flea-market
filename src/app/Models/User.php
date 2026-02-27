@@ -22,4 +22,9 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function likes()
+{
+    return $this->hasMany(\App\Models\Like::class);
+}
 }
