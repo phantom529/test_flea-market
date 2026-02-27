@@ -1,0 +1,4 @@
+
+# Duplicate Laravel directory (not used by docker-compose)
+src/html/
+*Zone.Identifier
