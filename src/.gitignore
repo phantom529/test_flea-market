@@ -2,18 +2,15 @@
 
 # OS
 .DS_Store
-# Node
-/node_modules
-
-/public/hot
-/public/storage
 
 # Laravel
-/storage/*.key
-/vendor/
-.env
-/storage/framework/
-storage/logs/
+src/.env
+src/vendor/
+src/node_modules/
+src/storage/
+src/bootstrap/cache/*.php
+src/public/storage
+src/public/hot
 
 # Docker / MySQL data
 docker/mysql/data/
@@ -28,3 +25,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+# WSL/Windows metadata
+*Zone.Identifier
