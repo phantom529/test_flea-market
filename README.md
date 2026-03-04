@@ -5,7 +5,6 @@
 ## 環境構築
 ### Dockerビルド
 - git clone https://github.com/phantom529/test_flea-market.git
-- cd test_flea-market
 - docker-compose up -d --build
 ### Laravel環境構築
 - docker-compose exec php bash
@@ -33,3 +32,4 @@
 ## ER図
 ```mermaid
 erDiagram
+
