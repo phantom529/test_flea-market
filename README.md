@@ -9,6 +9,7 @@
 ```bash
 git clone https://github.com/phantom529/test_flea-market.git
 cd test_flea-market
+
 docker-compose up -d --build
 docker-compose exec php bash
 composer install
@@ -39,4 +40,3 @@ nginx 1.21.1
 phpMyAdmin
 
 MailHog
-
