@@ -26,18 +26,20 @@ services:
       MYSQL_PASSWORD: flea_pass
     ports:
       - "3306:3306"
-    command: --default-authentication-plugin=mysql_native_password
+    command: ["--default-authentication-plugin=mysql_native_password"]
     volumes:
       - mysql-data:/var/lib/mysql
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      # 初期化SQLを使うなら次を有効化
+      # - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
-      PMA_ARBITRARY: 1
+      PMA_ARBITRARY: "1"
       PMA_HOST: mysql
-      PMA_USER: laravel
-      PMA_PASSWORD: laravel_pass
+      PMA_USER: flea_user
+      PMA_PASSWORD: flea_pass
     depends_on:
       - mysql
     ports:
