@@ -6,21 +6,21 @@
 ## 環境構築
 
 ### Dockerビルド
-\```bash
+```bash
 git clone https://github.com/phantom529/test_flea-market.git
 cd test_flea-market
 docker-compose up -d --build
-\```
+```
 
 ### Laravel環境構築
-\```bash
+```bash
 docker-compose exec php bash
 composer install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate:fresh --seed
 php artisan storage:link
-\```
+```
 
 ## 開発環境URL
 - アプリ：http://localhost/
