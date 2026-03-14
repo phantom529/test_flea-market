@@ -1,0 +1,137 @@
+/* ===== リセット・基本設定 ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* paddingを含めてwidthを計算する（標準設定）*/
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== ヘッダー ===== */
+.header {
+  background-color: #333333;
+  /* 黒に変更 */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+.header__inner {
+  max-width: 1540px;
+  /* 仕様書の最大幅に合わせる */
+  margin: 0 auto;
+  /* 中央寄せ */
+  padding: 0 24px;
+  height: 70px;
+  display: flex;
+  /* 横並びにする */
+  align-items: center;
+  /* 縦方向を中央に */
+  gap: 24px;
+  /* 要素間のすき間 */
+}
+
+.header__logo img {
+  height: 40px;
+}
+
+.header__logo-text {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* 検索フォーム：横幅を制限する */
+.header__search {
+  width: 380px;
+  /* 幅を固定 */
+  display: flex;
+}
+
+.header__search-input {
+  flex: 1;
+  padding: 8px 16px;
+  border: 1px solid #cccccc;
+  border-radius: 4px 0 0 4px;
+  font-size: 14px;
+  outline: none;
+  background-color: #ffffff;
+}
+
+.header__search-btn {
+  padding: 8px 16px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* ナビ：文字を白に */
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-left: auto;
+  /* 右端に寄せる */
+  white-space: nowrap;
+}
+
+.header__nav-link,
+.header__nav-btn {
+  font-size: 14px;
+  color: #ffffff;
+  /* 白に変更 */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* 出品ボタン：白枠・白文字 */
+.header__nav-sell-btn {
+  padding: 8px 24px;
+  border: 2px solid #ffffff;
+  /* 白枠に変更 */
+  border-radius: 4px;
+  font-size: 14px;
+  color: #ffffff;
+  /* 白文字に変更 */
+  font-weight: bold;
+}
+
+.header__nav-sell-btn:hover {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+/* ===== メインコンテンツ ===== */
+main {
+  min-height: calc(100vh - 70px - 60px);
+  /* 画面の高さからヘッダー・フッターを引く */
+}
+
+/* ===== フッター ===== */
+.footer {
+  background-color: #333333;
+  color: #ffffff;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer__copy {
+  font-size: 12px;
+}

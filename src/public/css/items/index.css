@@ -1,60 +1,120 @@
-/* ===== ページ全体（白を全幅） ===== */
+/* ===== ページ全体 ===== */
 .page {
-  width: 100%;
-  background: #fff;
   min-height: calc(100vh - 70px);
-  border: none !important;
 }
 
-/* tabsとgridの共通コンテナ */
+/* ===== コンテンツ幅 ===== */
 .content {
-  width: min(1512px, 100%);
+  max-width: 1540px;
   margin: 0 auto;
-  padding: 0 69px;
-  /* ← これが “検索ボックス寄り” の基準 */
+  padding: 0 80px;
+  /* 左右の余白 */
 }
 
-/* ===== タブ（検索ボックス寄りに） =====
-   右画像の “products-row : 幅 1374px / 左 69px” を意識
-   → 1400px台で「左 70px」スタートにすると近い */
+/* ===== タブ ===== */
 .tabs {
   display: flex;
-  gap: 48px;
-  padding: 16px 0;
-  border-bottom: 1px solid #ccc;
-
-  /* ここがタブの位置調整ポイント */
-  width: min(1374px, 100%);
-  margin-left: 69px;
-  /* ← Figmaの左=69px */
+  gap: 32px;
+  padding: 24px 0 0;
+  border-bottom: 1px solid #cccccc;
+  margin-bottom: 32px;
 }
 
 .tabs__link {
-  text-decoration: none;
-  color: #726e6e;
-  font-weight: 800;
-  padding: 6px 0;
   font-size: 15px;
+  color: #333333;
+  padding-bottom: 12px;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
 }
 
+/* アクティブなタブ：赤文字・赤下線 */
 .tabs__link.is-active {
-  color: #e60023;
+  color: #ff0000;
+    font-weight: bold;
 }
 
-/* ===== グリッド（4列×2行で収める） =====
-   画像の「products-row 幅 1374px / 高さ 320px」より
-   → 1行4枚が基本になるように、コンテナ幅を1374pxで固定気味に */
-
-/* 4列固定：1400〜1540を想定 */
+/* ===== 商品グリッド ===== */
 .grid {
   padding: 34px 0 60px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  /* 4列 */
   column-gap: 40px;
   row-gap: 48px;
 }
 
-/* 1400未満だけ崩れ防止 */
+/* ===== 商品カード ===== */
+.card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card__image {
+  position: relative;
+  /* SOLDラベルの基準点にする */
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  /* 正方形を保つ */
+  background-color: #d9d9d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  overflow: hidden;
+  /* 画像がはみ出さないように */
+}
+
+/* 実際の商品画像（DBから取得後に使う） */
+.card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* 画像を正方形に収める */
+}
+
+/* 仮の「商品画像」テキスト */
+.card__image-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #555555;
+}
+
+/* SOLDラベル */
+.card__sold {
+  position: absolute;
+  /* 画像の上に重ねる */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* 半透明の黒 */
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__name {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #333333;
+}
+
+/* ===== 空の場合 ===== */
+.empty {
+  grid-column: 1 / -1;
+  /* 4列全体にまたがって表示 */
+  text-align: center;
+  color: #999999;
+  padding: 60px 0;
+}
+
+/* ===== レスポンシブ ===== */
 @media (max-width: 1399px) {
   .content {
     padding: 0 40px;
@@ -79,55 +139,4 @@
   .grid {
     grid-template-columns: 1fr;
   }
-}
-
-/* ===== カード ===== */
-.card {
-  text-decoration: none;
-  color: #111;
-  display: block;
-}
-
-/* 画像ボックス：見本に近い比率 */
-.card__image {
-  height: 250px;
-  /* 210だと小さく見えるので少し大きく */
-  background: #dcdcdc;
-  display: grid;
-  place-items: center;
-  position: relative;
-  border-radius: 2px;
-}
-
-.card__image-text {
-  font-weight: 800;
-  font-size: 34px;
-  color: #333;
-}
-
-.card__sold {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: #e60023;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 800;
-  padding: 6px 10px;
-  border-radius: 2px;
-}
-
-.card__name {
-  margin-top: 10px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #111;
-}
-
-/* 何も無い時 */
-.empty {
-  width: min(1374px, 100%);
-  margin-left: 69px;
-  padding: 30px 0;
-  color: #666;
 }

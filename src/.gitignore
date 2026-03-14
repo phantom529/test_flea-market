@@ -4,8 +4,8 @@
 .DS_Store
 
 # Laravel
-src/.env
-src/vendor/
+.env
+/vendor
 src/node_modules/
 src/storage/
 src/bootstrap/cache/*.php
