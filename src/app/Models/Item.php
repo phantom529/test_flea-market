@@ -49,4 +49,10 @@ class Item extends Model
 {
     return $this->hasMany(\App\Models\Like::class);
 }
+
+// コメント
+public function comments()
+{
+    return $this->hasMany(Comment::class);
+}
 }

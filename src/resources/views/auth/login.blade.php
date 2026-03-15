@@ -1,43 +1,49 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>ログイン画面</title>
-    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
-</head>
-<body>
-<header class="header">
-    <h1 class="header__logo">CT COACHTECH</h1>
-</header>
+@extends('layouts.app')
 
-<main class="auth">
-    <h1 class="auth__title">ログイン</h1>
+@section('title', 'ログイン')
 
-    <form class="auth__form" method="POST" action="{{ route('login') }}" >
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+@endsection
+
+@section('content')
+<div class="auth">
+    <h2 class="auth__title">ログイン</h2>
+
+    <form method="POST" action="{{ route('login') }}" class="auth__form">
         @csrf
 
         <div class="auth__group">
-            <label>メールアドレス</label>
-            <input type="email" name="email" value="{{ old('email') }}" required autofocus>
+            <label class="auth__label">メールアドレス</label>
+            <input
+                type="email"
+                name="email"
+                class="auth__input"
+                value="{{ old('email') }}"
+                autofocus
+            >
             @error('email')
-                <p class="error-message">{{ $message }}</p>
+                <p class="auth__error">{{ $message }}</p>
             @enderror
         </div>
 
         <div class="auth__group">
-            <label>パスワード</label>
-            <input type="password" name="password" required>
+            <label class="auth__label">パスワード</label>
+            <input
+                type="password"
+                name="password"
+                class="auth__input"
+            >
             @error('password')
-                <p class="error-message">{{ $message }}</p>
+                <p class="auth__error">{{ $message }}</p>
             @enderror
         </div>
 
         <button type="submit" class="auth__button">ログインする</button>
     </form>
 
-    <p class="register__link">
+    <p class="auth__link">
         <a href="{{ route('register') }}">会員登録はこちら</a>
     </p>
-</main>
-</body>
-</html>
+</div>
+@endsection

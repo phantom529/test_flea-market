@@ -24,11 +24,10 @@
 <header class="header">
 <div class="header__inner">
 
-  {{-- ロゴ --}}
-  {{-- 変更後（ロゴ画像が用意できるまでの仮対応） --}}
-<a href="/" class="header__logo">
-    <span class="header__logo-text">COACHTECH</span>
-</a>
+{{-- ロゴ --}}
+  <a href="/" class="header__logo">
+    <img src="{{ asset('images/COACHTECHヘッダーロゴ.png') }}" alt="COACHTECH">
+  </a>
 
   {{-- 検索フォーム --}}
     <form class="header__search" action="/" method="GET">
