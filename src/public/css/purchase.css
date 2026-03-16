@@ -1,75 +1,197 @@
+/* ===== レイアウト全体 ===== */
 .purchase {
   display: flex;
-  max-width: 1000px;
-  margin: 40px auto;
-  gap: 40px;
+  max-width: 1100px;
+  margin: 60px auto;
+  gap: 60px;
+  padding: 0 40px;
 }
 
 .purchase-left {
-  width: 65%;
+  width: 60%;
 }
 
 .purchase-right {
-  width: 35%;
+  width: 32%;
 }
 
+/* ===== 商品情報 ===== */
 .item {
   display: flex;
-  gap: 20px;
+  gap: 24px;
+  align-items: flex-start;
+  padding-bottom: 24px;
 }
 
 .item-image {
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   background: #ddd;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  font-size: 13px;
+  color: #888;
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .item-name {
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 12px;
 }
 
 .item-price {
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 20px;
 }
 
+/* ===== 区切り線 ===== */
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 24px 0;
+}
+
+/* ===== セクション共通 ===== */
 .section {
-  margin-top: 30px;
+  margin-bottom: 8px;
 }
 
+.section h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+/* ===== 支払い方法プルダウン =====*/
 .select {
-  width: 100%;
-  padding: 8px;
+  width: 260px;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  appearance: auto;
+}
+
+/* ===== 配送先 ===== */
+.delivery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
 .change {
   color: #007bff;
   font-size: 14px;
   cursor: pointer;
+  text-decoration: none;
 }
 
+.change:hover {
+  text-decoration: underline;
+}
+
+/* ===== 右カラム：サマリー ===== */
 .summary {
   border: 1px solid #ccc;
-  padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  align-items: center;
+  padding: 24px 20px;
+  font-size: 15px;
 }
 
+.summary hr {
+  margin: 0;
+  border-top: 1px solid #ccc;
+}
+
+/* ===== 購入ボタン ===== */
 .buy-button {
   width: 100%;
-  padding: 15px;
+  padding: 18px;
   background: #ff5a5f;
   color: white;
   border: none;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
+  border-radius: 4px;
+}
+
+.buy-button:hover {
+  background: #e04e53;
+}
+
+/* ===== 住所変更画面 ===== */
+.address-container {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 0 40px;
+}
+
+.address-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.address-form__group {
+  margin-bottom: 32px;
+}
+
+.address-form__label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.address-form__input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+}
+
+.address-form__input:focus {
+  border-color: #333;
+}
+
+.address-form__error {
+  color: #e00;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.address-btn {
+  width: 100%;
+  padding: 18px;
+  background: #ff5a5f;
+  color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+.address-btn:hover {
+  background: #e04e53;
 }

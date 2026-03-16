@@ -20,10 +20,10 @@ a {
 /* ===== ヘッダー ===== */
 .header {
   background-color: #333333;
-  /* 黒に変更 */
   position: sticky;
   top: 0;
   z-index: 100;
+}
 
 .header__inner {
   max-width: 1540px;
@@ -124,12 +124,13 @@ main {
 
 /* ===== フッター ===== */
 .footer {
-  background-color: #333333;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #333333;
   height: 60px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-left: 24px;
 }
 
 .footer__copy {

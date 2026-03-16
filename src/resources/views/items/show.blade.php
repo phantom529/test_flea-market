@@ -48,7 +48,7 @@
             <button class="detail__buy-btn detail__buy-btn--sold" disabled>SOLD</button>
         @else
             @auth
-                <a href="{{ route('purchase.index', $item->id) }}" class="detail__buy-btn">
+                <a href="{{ route('purchase.show', $item->id) }}" class="detail__buy-btn">
                     購入手続きへ
                 </a>
             @else
