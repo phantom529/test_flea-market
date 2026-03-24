@@ -33,3 +33,15 @@ Route::post('/items/{item}/comments', [App\Http\Controllers\CommentController::c
 Route::get('/stripe', [StripeController::class, 'index'])->name('stripe.index');
 Route::post('/stripe/charge', [StripeController::class, 'charge']);
 Route::get('/stripe/success', [StripeController::class, 'success']);
+
+// 商品出品画面
+Route::get('/sell', fn() => view('items.sell'));
+
+// マイページ
+Route::get('/mypage', fn() => view('mypage.index'));
+
+// プロフィール設定
+Route::get('/mypage/profile', fn() => view('mypage.profile'));
+
+// メール認証誘導画面
+Route::get('/email/verify', fn() => view('auth.verify-email'));
