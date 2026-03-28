@@ -25,23 +25,35 @@ Route::post('/purchase/{id}/address', [PurchaseController::class, 'addressUpdate
     ->name('purchase.address.update')
     ->middleware('auth');
 
-Route::post('/items/{item}/comments', [App\Http\Controllers\CommentController::class, 'store'])
-    ->name('comments.store')
-    ->middleware('auth');
-
 // Stripe（既存）
 Route::get('/stripe', [StripeController::class, 'index'])->name('stripe.index');
 Route::post('/stripe/charge', [StripeController::class, 'charge']);
 Route::get('/stripe/success', [StripeController::class, 'success']);
 
 // 商品出品画面
-Route::get('/sell', fn() => view('items.sell'));
+Route::middleware('auth')->group(function () {
+    Route::get('/sell', [App\Http\Controllers\SellController::class, 'index'])->name('sell.index');
+    Route::post('/sell', [App\Http\Controllers\SellController::class, 'store'])->name('sell.store');
+});
 
 // マイページ
-Route::get('/mypage', fn() => view('mypage.index'));
+Route::middleware('auth')->get('/mypage', [App\Http\Controllers\MypageController::class, 'index'])->name('mypage.index');
 
 // プロフィール設定
-Route::get('/mypage/profile', fn() => view('mypage.profile'));
+Route::middleware('auth')->group(function () {
+    Route::get('/mypage/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('mypage.profile');
+    Route::put('/mypage/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('mypage.profile.update');
+});
 
 // メール認証誘導画面
 Route::get('/email/verify', fn() => view('auth.verify-email'));
+
+//いいね//
+Route::middleware('auth')->group(function () {
+    Route::post('/items/{item}/like', [App\Http\Controllers\LikeController::class, 'toggle'])->name('items.like');
+});
+
+//コメント//
+Route::middleware('auth')->group(function () {
+    Route::post('/items/{item}/comments', [App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
+});

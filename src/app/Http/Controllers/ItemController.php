@@ -62,8 +62,13 @@ class ItemController extends Controller
     }
 
     public function show(Item $item)
-    {
-        $item->load(['user', 'categories']);
-        return view('items.show', compact('item'));
-    }
+{
+    $item->load(['user', 'categories', 'comments.user', 'likes']);
+
+    $liked = Auth::check()
+        ? $item->likes->where('user_id', Auth::id())->isNotEmpty()
+        : false;
+
+    return view('items.show', compact('item', 'liked'));
+}
 }

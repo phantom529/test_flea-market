@@ -8,7 +8,7 @@
 <div class="profile-edit-container">
     <h1 class="profile-edit-title">プロフィール設定</h1>
 
-    <form action="/mypage/profile" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('mypage.profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 

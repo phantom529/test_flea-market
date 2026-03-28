@@ -12,7 +12,7 @@
 <header class="header">
   <div class="header__inner">
     <a href="/" class="header__logo">
-      <img src="{{ asset('images/COACHTECHヘッダーロゴ.png') }}" alt="COACHTECH">
+      <img src="{{ asset('images/logo.png') }}" alt="COACHTECH">
     </a>
     <form class="header__search" action="/" method="GET">
       <input

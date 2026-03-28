@@ -87,6 +87,13 @@
   object-fit: contain;
 }
 
+.detail__icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
 /* ===== 購入ボタン ===== */
 .detail__buy-btn {
   display: block;

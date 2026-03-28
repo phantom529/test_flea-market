@@ -6,7 +6,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
@@ -16,6 +15,9 @@ class User extends Authenticatable
         'email',
         'password',
         'profile_image',
+        'postal_code',
+        'address',
+        'building_name',
     ];
 
     protected $hidden = [
@@ -24,7 +26,17 @@ class User extends Authenticatable
     ];
 
     public function likes()
-{
-    return $this->hasMany(\App\Models\Like::class);
-}
+    {
+        return $this->hasMany(\App\Models\Like::class);
+    }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
 }

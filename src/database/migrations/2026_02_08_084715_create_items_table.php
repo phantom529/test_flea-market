@@ -24,7 +24,7 @@ class CreateItemsTable extends Migration
             $table->integer('price')->unsigned();;//0円以上
             $table->string('condition');
             $table->string('brand_name');
-            $table->string('item_comment');
+            $table->string('item_comment')->default('');
 
              $table->boolean('is_sold')->default(false);//二重購入防止
 

@@ -10,10 +10,13 @@
     {{-- プロフィールヘッダー --}}
     <div class="profile-header">
         <div class="profile-avatar">
-            {{-- プロフィール画像があれば表示、なければグレーの丸 --}}
-            <img src="{{ asset('storage/profile_images/default.png') }}" alt="プロフィール画像" class="profile-avatar-img">
+            @if($user->profile_image)
+                <img src="{{ asset('storage/' . $user->profile_image) }}" alt="プロフィール画像" class="profile-avatar-img">
+            @else
+                <img src="{{ asset('images/default_avatar.png') }}" alt="プロフィール画像" class="profile-avatar-img">
+            @endif
         </div>
-        <p class="profile-username">ユーザー名</p>
+        <p class="profile-username">{{ $user->name }}</p>
         <a href="/mypage/profile" class="btn-edit-profile">プロフィールを編集</a>
     </div>
 
@@ -25,30 +28,36 @@
 
     {{-- 出品した商品 --}}
     <div class="product-grid" id="panel-sell">
-        {{-- 静的ダミー4件 --}}
-        @for($i = 0; $i < 4; $i++)
-        <div class="product-card">
-            <div class="product-image-placeholder">商品画像</div>
-            <p class="product-name">商品名</p>
-        </div>
-        @endfor
+        @forelse($soldItems as $item)
+        <a class="product-card" href="{{ route('items.show', $item->id) }}">
+            <div class="product-image-placeholder">
+                <img src="{{ $item->items_image }}" alt="{{ $item->name }}" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <p class="product-name">{{ $item->name }}</p>
+        </a>
+        @empty
+        <p>出品した商品はありません。</p>
+        @endforelse
     </div>
 
     {{-- 購入した商品 --}}
     <div class="product-grid product-grid--hidden" id="panel-buy">
-        @for($i = 0; $i < 2; $i++)
-        <div class="product-card">
-            <div class="product-image-placeholder">商品画像</div>
-            <p class="product-name">商品名</p>
-        </div>
-        @endfor
+        @forelse($boughtItems as $item)
+        <a class="product-card" href="{{ route('items.show', $item->id) }}">
+            <div class="product-image-placeholder">
+                <img src="{{ $item->items_image }}" alt="{{ $item->name }}" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <p class="product-name">{{ $item->name }}</p>
+        </a>
+        @empty
+        <p>購入した商品はありません。</p>
+        @endforelse
     </div>
 
 </div>
 
 <script>
 function switchTab(tab) {
-    // タブ切り替え（静的確認用）
     document.getElementById('tab-sell').classList.remove('tab-item--active');
     document.getElementById('tab-buy').classList.remove('tab-item--active');
     document.getElementById('panel-sell').classList.add('product-grid--hidden');

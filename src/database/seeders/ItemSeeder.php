@@ -107,8 +107,7 @@ class ItemSeeder extends Seeder
                 'price'        => 2500,
                 'brand_name'   => '',
                 'condition'    => '目立った傷や汚れなし',
-                'items_image'  => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/%E5%A4%96%E5%87%BA%E3%83%A1%E3%82%A4%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97.jpg',
-                'item_comment' => '',
+                'items_image' => 'https://user0514.cdnw.net/shared/img/thumb/MS251_kosumesetsi_TP_V.jpg'
             ],
         ];
 

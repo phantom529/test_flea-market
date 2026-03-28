@@ -27,12 +27,12 @@
       @else
         @foreach($items as $item)
           <a class="card" href="{{ route('items.show', $item->id) }}">
-            <div class="card__image">
-              <span class="card__image-text">商品画像</span>
-              @if($item->is_sold)
-                <span class="card__sold">SOLD</span>
-              @endif
-            </div>
+    <div class="card__image">
+        <img src="{{ $item->items_image }}" alt="{{ $item->name }}" class="card__img">
+        @if($item->is_sold)
+          <span class="card__sold">SOLD</span>
+        @endif
+    </div>
             <div class="card__name">{{ $item->name }}</div>
           </a>
         @endforeach

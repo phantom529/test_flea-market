@@ -34,11 +34,23 @@
         {{-- いいね・コメントアイコン --}}
 <div class="detail__actions">
     <div class="detail__action-item">
-        <img src="{{ asset('images/ハートロゴ_デフォルト.png') }}" alt="いいね" class="detail__icon">
-        <span>{{ $item->likes_count ?? 0 }}</span>
+        @auth
+        <form id="like-form" action="{{ route('items.like', $item->id) }}" method="POST">
+            @csrf
+            <button type="button" id="like-btn" class="detail__icon-btn">
+                <img src="{{ $liked ? asset('images/heart_active.png.png') : asset('images/heart_default.png') }}"
+                     alt="いいね"
+                     class="detail__icon"
+                     id="like-img">
+            </button>
+        </form>
+        @else
+            <img src="{{ asset('images/heart_default.png') }}" alt="いいね" class="detail__icon">
+        @endauth
+        <span id="like-count">{{ $item->likes->count() }}</span>
     </div>
     <div class="detail__action-item">
-        <img src="{{ asset('images/ふきだしロゴ.png') }}" alt="コメント" class="detail__icon">
+        <img src="{{ asset('images/comment.png') }}" alt="コメント" class="detail__icon">
         <span>{{ $item->comments->count() }}</span>
     </div>
 </div>
@@ -124,4 +136,25 @@
 
     </div>
 </div>
+<script>
+document.getElementById('like-btn')?.addEventListener('click', function () {
+    const form = document.getElementById('like-form');
+    const token = form.querySelector('input[name="_token"]').value;
+
+    fetch(form.action, {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': token,
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById('like-count').textContent = data.count;
+        document.getElementById('like-img').src = data.liked
+            ? '{{ asset("images/heart_active.png") }}'
+            : '{{ asset("images/heart_default.png") }}';
+    });
+});
+</script>
 @endsection
