@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\Purchase;
+use App\Http\Requests\AddressRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Stripe\Stripe;
@@ -73,14 +74,8 @@ class PurchaseController extends Controller
         ));
     }
 
-    public function addressUpdate(Request $request, $id)
+    public function addressUpdate(AddressRequest $request, $id)
     {
-        $request->validate([
-            'postal_code'   => ['required', 'regex:/^\d{3}-\d{4}$/'],
-            'address'       => ['required', 'string', 'max:255'],
-            'building_name' => ['nullable', 'string', 'max:255'],
-        ]);
-
         session([
             'purchase_postal_code'   => $request->postal_code,
             'purchase_address'       => $request->address,

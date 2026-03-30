@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\Category;
-use Illuminate\Http\Request;
+use App\Http\Requests\ExhibitionRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,17 +15,8 @@ class SellController extends Controller
         return view('items.sell');
     }
 
-    public function store(Request $request)
+    public function store(ExhibitionRequest $request)
     {
-        $request->validate([
-            'name'          => 'required|string|max:255',
-            'description'   => 'required|string',
-            'price'         => 'required|integer|min:0',
-            'condition'     => 'required|string',
-            'product_image' => 'required|image|max:2048',
-        ]);
-
-        // 画像保存
         $imagePath = $request->file('product_image')->store('items', 'public');
 
         $item = Item::create([
@@ -40,7 +31,6 @@ class SellController extends Controller
             'is_sold'      => false,
         ]);
 
-        // カテゴリ紐付け
         if ($request->has('categories')) {
             $categoryIds = Category::whereIn('name', $request->categories)->pluck('id');
             $item->categories()->attach($categoryIds);
