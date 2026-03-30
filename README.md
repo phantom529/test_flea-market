@@ -35,3 +35,7 @@ php artisan storage:link
 - nginx 1.21.1
 - phpMyAdmin
 - MailHog
+
+## ER図
+
+![ER図](erd.png)
