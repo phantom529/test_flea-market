@@ -35,3 +35,20 @@ php artisan storage:link
 - nginx 1.21.1
 - phpMyAdmin
 - MailHog
+
+## ER図
+
+![ER図](public/images/erd.png)
+
+## URL一覧
+
+| URL | 説明 |
+|---|---|
+| http://localhost | 商品一覧（トップ） |
+| http://localhost/register | 会員登録 |
+| http://localhost/login | ログイン |
+| http://localhost/items/{id} | 商品詳細 |
+| http://localhost/purchase/{id} | 商品購入 |
+| http://localhost/sell | 商品出品 |
+| http://localhost/mypage | マイページ |
+| http://localhost/mypage/profile | プロフィール設定 |
