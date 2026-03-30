@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.simple')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
@@ -11,8 +11,13 @@
         メール認証を完了してください。
     </p>
 
-    <a href="#" class="btn-verify">認証はこちらから</a>
+    <a href="{{ route('verification.notice') }}" class="btn-verify">認証はこちらから</a>
 
-    <a href="#" class="link-resend">認証メールを再送する</a>
+    <form method="POST" action="{{ route('verification.send') }}">
+        @csrf
+        <button type="submit" class="link-resend" style="background:none;border:none;cursor:pointer;">
+            認証メールを再送する
+        </button>
+    </form>
 </div>
 @endsection

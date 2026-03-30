@@ -31,7 +31,10 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.register');
         });
 
-        // ログイン失敗時のエラーメッセージを日本語化
+        Fortify::verifyEmailView(function () {
+            return view('auth.verify-email');
+        });
+
         Fortify::authenticateUsing(function (Request $request) {
             $user = \App\Models\User::where('email', $request->email)->first();
 

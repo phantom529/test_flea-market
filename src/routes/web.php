@@ -46,7 +46,13 @@ Route::middleware('auth')->group(function () {
 });
 
 // メール認証誘導画面
-Route::get('/email/verify', fn() => view('auth.verify-email'));
+// メール認証関連ルート
+Route::get('/email/verify', fn() => view('auth.verify-email'))->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', [\App\Http\Controllers\Auth\VerifyEmailController::class, '__invoke'])->middleware(['auth', 'signed'])->name('verification.verify');
+Route::post('/email/verification-notification', function () {
+    request()->user()->sendEmailVerificationNotification();
+    return back()->with('status', 'verification-link-sent');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 //いいね//
 Route::middleware('auth')->group(function () {
