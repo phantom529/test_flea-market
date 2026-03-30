@@ -52,3 +52,7 @@ php artisan storage:link
 | http://localhost/sell | 商品出品 |
 | http://localhost/mypage | マイページ |
 | http://localhost/mypage/profile | プロフィール設定 |
+
+## 備考
+
+- メイクセットの商品画像について、元のS3画像（外出メイクアップセット.jpg）がアクセス拒否のため別の画像URLに差し替えています。
